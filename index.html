@@ -6,56 +6,82 @@
     <title>Ritixplore - Stay Focused</title>
     <style>
         body {
-            text-align: center;
-            background-color: #d4edda;
+            background-color: #d4edda; /* Light green background */
             font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
         }
         h1 {
-            margin-top: 20px;
+            color: #155724;
         }
         input {
-            width: 60%;
+            width: 80%;
             padding: 10px;
+            margin-top: 20px;
             font-size: 16px;
-            margin-top: 10px;
         }
         button {
             padding: 10px 20px;
             font-size: 16px;
-            margin-top: 10px;
             cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            margin-top: 10px;
         }
-        .quote {
+        #quote {
             margin-top: 30px;
-            font-style: italic;
             font-size: 18px;
-            color: #333;
+            color: #155724;
+            min-height: 50px;
         }
     </style>
 </head>
 <body>
     <h1>Ritixplore</h1>
-    <h3>Stay Focused</h3>
-    <input type="text" id="searchBox" placeholder="Enter your search...">
+    <p>Stay Focused</p>
+    <input type="text" id="searchBox" placeholder="Enter your search query">
     <button onclick="search()">Enter</button>
-    <p class="quote" id="quote">Loading quote...</p>
+
+    <p id="quote"></p>
 
     <script>
         function search() {
-            let query = document.getElementById("searchBox").value;
+            let query = document.getElementById('searchBox').value;
             if (query) {
                 window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
             }
         }
 
-        // Productivity Quotes
+        // Quotes for focus & motivation
         const quotes = [
-            "Stay focused and never give up!",
-            "Discipline is the bridge between goals and accomplishment.",
-            "The future depends on what you do today.",
-            "Focus on being productive instead of busy."
+            "Focus on being productive instead of busy.",
+            "Your future is created by what you do today, not tomorrow.",
+            "The secret of getting ahead is getting started.",
+            "Stay focused, go after your dreams, and keep moving forward."
         ];
-        document.getElementById("quote").innerText = quotes[Math.floor(Math.random() * quotes.length)];
+
+        let quoteIndex = 0;
+        let quoteText = "";
+        let i = 0;
+
+        function typeQuote() {
+            if (i < quoteText.length) {
+                document.getElementById("quote").textContent += quoteText.charAt(i);
+                i++;
+                setTimeout(typeQuote, 50);
+            }
+        }
+
+        function showQuote() {
+            quoteIndex = Math.floor(Math.random() * quotes.length);
+            quoteText = quotes[quoteIndex];
+            document.getElementById("quote").textContent = "";
+            i = 0;
+            typeQuote();
+        }
+
+        window.onload = showQuote;
     </script>
 </body>
 </html>
