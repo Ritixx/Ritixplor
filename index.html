@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ritixplore - Stay Focused</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #d4edda;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        input {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .quote {
+            margin-top: 30px;
+            font-style: italic;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ritixplore</h1>
+    <h3>Stay Focused</h3>
+    <input type="text" id="searchBox" placeholder="Enter your search...">
+    <button onclick="search()">Enter</button>
+    <p class="quote" id="quote">Loading quote...</p>
+
+    <script>
+        function search() {
+            let query = document.getElementById("searchBox").value;
+            if (query) {
+                window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
+            }
+        }
+
+        // Productivity Quotes
+        const quotes = [
+            "Stay focused and never give up!",
+            "Discipline is the bridge between goals and accomplishment.",
+            "The future depends on what you do today.",
+            "Focus on being productive instead of busy."
+        ];
+        document.getElementById("quote").innerText = quotes[Math.floor(Math.random() * quotes.length)];
+    </script>
+</body>
+</html>
